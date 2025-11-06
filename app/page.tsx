@@ -1,8 +1,31 @@
-"use client"
-
 import Link from "next/link"
+import { musicSets, booksNow } from "@/lib/favs"
+
+function lastUpdated() {
+  const commit = process.env.COMMIT_REF || process.env.GIT_COMMIT || null
+  const date = new Date()
+  const formatted = date.toLocaleString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+  return { formatted, commit }
+}
 
 export default function Page() {
+  const { formatted, commit } = lastUpdated()
+
+  // helper to embed YouTube regardless of youtu.be or watch?v=
+  const toEmbed = (url: string) =>
+    url
+      ? url
+          .replace("youtu.be/", "www.youtube.com/embed/")
+          .replace("watch?v=", "embed/")
+          .split("?")[0]
+      : ""
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 antialiased">
       <div className="mx-auto max-w-3xl px-5 py-12">
@@ -23,65 +46,6 @@ export default function Page() {
             <li><a href="https://www.youtube.com/@enjoytheweless" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">YouTube</a></li>
             <li><a href="https://hawa.bearblog.dev/blog/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Pseudonym: Hawa (BearBlog)</a></li>
           </ul>
-        </section>
-
-        {/* What I love (gwern-style: one page, clear sections, minimal clicks) */}
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-1">What I love</h2>
-          <p className="text-neutral-700 text-sm mb-4">
-            A living list I update over time. One page, easy to skim.
-          </p>
-
-          {/* Music set */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-2">A set I keep looping</h3>
-            <p className="text-neutral-700 text-sm mb-3">
-              This is the party vibe I’d go to. Turn it up.
-            </p>
-            <div className="aspect-video w-full overflow-hidden rounded-md border border-neutral-200">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube.com/embed/o_N5JQYHJXk"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-            <p className="text-sm mt-2">
-              Direct link:{" "}
-              <a
-                className="underline underline-offset-4 hover:no-underline"
-                href="https://youtu.be/o_N5JQYHJXk?si=4AdVglPRbJm3lLwc"
-                target="_blank"
-                rel="noreferrer"
-              >
-                YouTube
-              </a>
-            </p>
-          </div>
-
-          {/* Books (simple list you can grow) */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Books I’m into (reading / re-reading)</h3>
-            <ul className="space-y-3">
-              {/* Replace these with your real picks anytime */}
-              <li className="border border-neutral-200 rounded-md p-3">
-                <p className="font-medium">High Output Management — Andrew Grove</p>
-                <p className="text-neutral-700 text-sm">Timeless system for building teams and output. I use this to ground my management.</p>
-              </li>
-              <li className="border border-neutral-200 rounded-md p-3">
-                <p className="font-medium">The 80/20 Principle — Richard Koch</p>
-                <p className="text-neutral-700 text-sm">My filter for focus. Small inputs, outsized gains.</p>
-              </li>
-              <li className="border border-neutral-200 rounded-md p-3">
-                <p className="font-medium">Power — Jeffrey Pfeffer</p>
-                <p className="text-neutral-700 text-sm">Understanding how the world really works in organizations.</p>
-              </li>
-            </ul>
-            <p className="text-xs text-neutral-600 mt-2">
-              I’ll keep this list fresh. Audiobooks count.
-            </p>
-          </div>
         </section>
 
         {/* Projects */}
@@ -120,6 +84,68 @@ export default function Page() {
           </ul>
         </section>
 
+        {/* Now playing & reading (below Projects) */}
+        <section className="mb-12">
+          <h2 className="text-xl font-semibold mb-3">Now playing & reading</h2>
+
+          {/* Music */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold mb-2">Music I keep looping</h3>
+            <ul className="space-y-4">
+              {musicSets.map((s) => (
+                <li key={s.url} className="space-y-2">
+                  <p className="font-medium">{s.title}</p>
+                  {s.url && (
+                    <div className="aspect-video w-full overflow-hidden rounded-md border border-neutral-200">
+                      <iframe
+                        className="h-full w-full"
+                        src={toEmbed(s.url)}
+                        title={s.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
+                  <p className="text-sm">
+                    {s.url ? (
+                      <>
+                        <a className="underline underline-offset-4 hover:no-underline" href={s.url} target="_blank" rel="noreferrer">
+                          YouTube link
+                        </a>{" "}
+                        <span className="text-neutral-600">— {s.note}</span>
+                      </>
+                    ) : (
+                      <span className="text-neutral-600">{s.note}</span>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Books now */}
+          <div>
+            <h3 className="text-lg font-semibold mb-2">Reading / listening now</h3>
+            <ul className="space-y-3">
+              {booksNow.map((b) => (
+                <li key={b.title} className="border border-neutral-200 rounded-md p-3">
+                  {b.url ? (
+                    <p className="font-medium">
+                      <a className="underline underline-offset-4 hover:no-underline" href={b.url} target="_blank" rel="noreferrer">
+                        {b.title}
+                      </a>
+                    </p>
+                  ) : (
+                    <p className="font-medium">{b.title}</p>
+                  )}
+                  {b.note && <p className="text-neutral-700 text-sm mt-1">{b.note}</p>}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-neutral-600 mt-2">I’ll keep this list fresh. Audiobooks count.</p>
+          </div>
+        </section>
+
         {/* Labs */}
         <section className="mb-12">
           <Link href="/labs" className="group">
@@ -133,12 +159,20 @@ export default function Page() {
           </p>
         </section>
 
-        {/* Footer (clean — removed old line) */}
+        {/* Footer */}
         <footer className="pt-6 mt-6 border-t border-neutral-200 text-sm text-neutral-600">
-          <p>Thanks for visiting.</p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <p>Thanks for visiting.</p>
+            <p className="text-neutral-500">
+              Last updated: <span className="font-medium">{formatted}</span>
+              {commit ? (
+                <> · <a className="underline underline-offset-4 hover:no-underline" href={`https://github.com/adithya-rowi/adithyarowi-website/commit/${commit}`} target="_blank" rel="noreferrer">view commit</a></>
+              ) : null}
+            </p>
+          </div>
         </footer>
       </div>
     </main>
   )
 }
-
+EOF
