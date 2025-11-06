@@ -5,6 +5,7 @@ function lastUpdated() {
   const commit = process.env.COMMIT_REF || process.env.GIT_COMMIT || null
   const date = new Date()
   const formatted = date.toLocaleString("en-GB", {
+    timeZone: "Asia/Jakarta",
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -38,6 +39,11 @@ export default function Page() {
         {/* Find me */}
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-3">Find me</h2>
+	  <p className="mb-3 text-neutral-700">
+  	  <a href="mailto:adithyarowi@gmail.com" className="underline underline-offset-4 hover:no-underline">
+    	    adithyarowi@gmail.com
+  	  </a>
+	</p>
           <ul className="list-disc pl-6 space-y-2">
             <li><a href="https://weless.substack.com/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Weless (Substack)</a></li>
             <li><a href="https://www.linkedin.com/in/adithya-n-rowi-a5a6a76/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">LinkedIn</a></li>
@@ -84,7 +90,20 @@ export default function Page() {
           </ul>
         </section>
 
-        {/* Now playing & reading (below Projects) */}
+        {/* Labs (moved above Now playing & reading) */}
+        <section className="mb-12">
+          <Link href="/labs" className="group">
+            <h2 className="text-xl font-semibold mb-3 underline underline-offset-4 group-hover:no-underline cursor-pointer">
+              Labs
+            </h2>
+          </Link>
+          <p className="text-neutral-800 text-sm">
+            New project: build a chatbot from YouTube links, so you can talk to whoever you admire.{" "}
+            <Link href="/labs" className="underline underline-offset-4 hover:no-underline">Learn more</Link>
+          </p>
+        </section>
+
+        {/* Now playing & reading */}
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-3">Now playing & reading</h2>
 
@@ -112,10 +131,10 @@ export default function Page() {
                         <a className="underline underline-offset-4 hover:no-underline" href={s.url} target="_blank" rel="noreferrer">
                           YouTube link
                         </a>{" "}
-                        <span className="text-neutral-600">— {s.note}</span>
+                        {s.note ? <span className="text-neutral-600">— {s.note}</span> : null}
                       </>
                     ) : (
-                      <span className="text-neutral-600">{s.note}</span>
+                      s.note ? <span className="text-neutral-600">{s.note}</span> : null
                     )}
                   </p>
                 </li>
@@ -144,19 +163,6 @@ export default function Page() {
             </ul>
             <p className="text-xs text-neutral-600 mt-2">I’ll keep this list fresh. Audiobooks count.</p>
           </div>
-        </section>
-
-        {/* Labs */}
-        <section className="mb-12">
-          <Link href="/labs" className="group">
-            <h2 className="text-xl font-semibold mb-3 underline underline-offset-4 group-hover:no-underline cursor-pointer">
-              Labs
-            </h2>
-          </Link>
-          <p className="text-neutral-800 text-sm">
-            New project: build a chatbot from YouTube links, so you can talk to whoever you admire.{" "}
-            <Link href="/labs" className="underline underline-offset-4 hover:no-underline">Learn more</Link>
-          </p>
         </section>
 
         {/* Footer */}
