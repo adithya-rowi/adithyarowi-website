@@ -1,6 +1,6 @@
 export const musicSets = [
   {
-    title: "Fred again.. Rooftop Set",
+    title: "Fred again.. – Green Room Set (Maka’s Birthday, Rome)",
     url: "https://youtu.be/o_N5JQYHJXk?si=4AdVglPRbJm3lLwc",
     note: "Party vibe I’d go to. Turn it up."
   },
@@ -10,7 +10,7 @@ export const booksNow = [
   {
     title: "Wisdom Takes Work",
     url: "https://www.amazon.com/Wisdom-Takes-Work-Repeat-Virtues/dp/0593191730",
-    note: "Reading now."
+    note: "Listening now."
   },
   {
     title: "The Almanack of Naval Ravikant",
@@ -20,7 +20,7 @@ export const booksNow = [
   {
     title: "High Output Management",
     url: "https://www.amazon.com/High-Output-Management-Andrew-Grove/dp/0679762884",
-    note: "Back in rotation."
+    note: "Try to be a great leader."
   },
   {
     title: "The Sense of Style",
@@ -30,11 +30,11 @@ export const booksNow = [
   {
     title: "Buku Syajaratul Ma'arif (Terjemah Syajarotul Ma'arif) – Syaikh al-‘Izz bin Abdus Salam",
     url: "",
-    note: "Spiritual anchor."
+    note: "Learning from a wise person."
   },
   {
     title: "Hayat dan Wasiat Abul Hasan asy-Syadzili",
     url: "",
-    note: "Guidance and wisdom."
+    note: "Learning to live closer to God.."
   },
 ];
