@@ -60,7 +60,7 @@ export default function Page() {
           <ul className="space-y-6">
             <li>
               <p className="font-medium">
-                
+                <a                
                   href="https://gus-ai.replit.app"
                   target="_blank"
                   rel="noreferrer"
