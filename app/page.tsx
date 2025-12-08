@@ -61,7 +61,7 @@ export default function Page() {
             <li>
               <p className="font-medium">
                 <a                
-                  href="https://gus-ai.replit.app"
+                  href="https://gusahab.com"
                   target="_blank"
                   rel="noreferrer"
                   className="underline underline-offset-4 hover:no-underline"
