@@ -80,7 +80,7 @@ export default function Page() {
 
             <li>
               <p className="font-medium">
-                
+                <a                
                   href="https://www.mahfudmd-ai.dev/"
                   target="_blank"
                   rel="noreferrer"
