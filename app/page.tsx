@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BiksCard from "./components/biks-card";
+import TechLink from "./components/tech-link";
 
 export const metadata: Metadata = {
   title: "Adithya Rowi",
@@ -41,12 +42,12 @@ export default function Page() {
             Personalized briefings that change decisions. 6-model AI council architecture.
           </p>
           <div className="project-tech">
-            <span className="tech">Perplexity</span>
-            <span className="tech">Gemini</span>
-            <span className="tech">Grok</span>
-            <span className="tech">DeepSeek</span>
-            <span className="tech">GPT</span>
-            <span className="tech">Claude</span>
+            <TechLink href="https://perplexity.ai">Perplexity</TechLink>
+            <TechLink href="https://gemini.google.com">Gemini</TechLink>
+            <TechLink href="https://grok.com">Grok</TechLink>
+            <TechLink href="https://deepseek.com">DeepSeek</TechLink>
+            <TechLink href="https://openai.com">GPT</TechLink>
+            <TechLink href="https://claude.ai">Claude</TechLink>
           </div>
         </a>
 
@@ -59,9 +60,9 @@ export default function Page() {
             AI-powered Islamic Q&amp;A chatbot inspired by the teaching style of Gus Baha.
           </p>
           <div className="project-tech">
-            <span className="tech">Ragie.AI</span>
+            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
             <span className="tech">RAG</span>
-            <span className="tech">ChatGPT-4o</span>
+            <TechLink href="https://openai.com">ChatGPT-4o</TechLink>
           </div>
         </a>
 
@@ -75,8 +76,8 @@ export default function Page() {
             holiday together. ~30% fund growth last year.
           </p>
           <div className="project-tech">
-            <span className="tech">Replit</span>
-            <span className="tech">Claude</span>
+            <TechLink href="https://replit.com">Replit</TechLink>
+            <TechLink href="https://claude.ai">Claude</TechLink>
           </div>
         </a>
 
@@ -89,9 +90,9 @@ export default function Page() {
             Chatbot built from Mahfud MD&apos;s YouTube content. Ask him anything.
           </p>
           <div className="project-tech">
-            <span className="tech">Ragie.AI</span>
+            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
             <span className="tech">RAG</span>
-            <span className="tech">GPT-4o</span>
+            <TechLink href="https://openai.com">GPT-4o</TechLink>
           </div>
         </a>
 
@@ -104,9 +105,9 @@ export default function Page() {
             Automates cyber maturity assessments using OCR, RAG, and LLM for faster analysis.
           </p>
           <div className="project-tech">
-            <span className="tech">Landing.AI</span>
-            <span className="tech">Ragie.AI</span>
-            <span className="tech">DeepSeek</span>
+            <TechLink href="https://landing.ai">Landing.AI</TechLink>
+            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
+            <TechLink href="https://deepseek.com">DeepSeek</TechLink>
           </div>
         </div>
       </section>

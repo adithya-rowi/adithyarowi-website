@@ -22,9 +22,24 @@ export default function BiksCard() {
         </span>
       </p>
       <div className="project-tech">
-        <span className="tech">OpenClaw</span>
-        <span className="tech">Claude</span>
-        <span className="tech">Replit</span>
+        <span
+          className="tech tech-link"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://openclaw.com", "_blank", "noopener,noreferrer"); }}
+        >
+          OpenClaw
+        </span>
+        <span
+          className="tech tech-link"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://claude.ai", "_blank", "noopener,noreferrer"); }}
+        >
+          Claude
+        </span>
+        <span
+          className="tech tech-link"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://replit.com", "_blank", "noopener,noreferrer"); }}
+        >
+          Replit
+        </span>
         <span className="tech">Telegram</span>
         <span className="tech">WhatsApp</span>
       </div>

@@ -221,6 +221,16 @@ a.project:hover {
   color: #706b65;
 }
 
+.tech-link {
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.tech-link:hover {
+  color: #aaa;
+  border-color: #333;
+}
+
 /* === NOW SECTION === */
 .now-group {
   margin-bottom: 2rem;
