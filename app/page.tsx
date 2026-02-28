@@ -36,16 +36,7 @@ export default function Page() {
           <p className="project-desc">
             AI translation layer for Indonesian SMEs. Voice note your business problem via WhatsApp
             or Telegram — agents build a working prototype in minutes.{" "}
-            <span
-              className="project-collab"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open("https://www.ngurahlinggih.com/", "_blank");
-              }}
-            >
-              with <span className="collab-link">Ngurah</span>
-            </span>
+            <span className="project-collab">with Ngurah</span>
           </p>
           <div className="project-tech">
             <span className="tech">OpenClaw</span>
