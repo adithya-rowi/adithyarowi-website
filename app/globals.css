@@ -11,7 +11,7 @@ html {
 
 body {
   background: #101010;
-  color: #aaa;
+  color: #bbb;
   font-family: 'Outfit', sans-serif;
   font-weight: 300;
   font-size: 15px;
@@ -60,7 +60,7 @@ header {
 
 .tagline {
   font-size: 0.9rem;
-  color: #706b65;
+  color: #888;
   margin-bottom: 1.5rem;
 }
 
@@ -72,7 +72,7 @@ header {
 }
 
 .header-links a {
-  color: #706b65;
+  color: #888;
   border-bottom: 1px solid transparent;
   padding-bottom: 1px;
   transition: color 0.25s, border-color 0.25s;
@@ -101,7 +101,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #706b65;
+  color: #888;
   margin-bottom: 1.8rem;
 }
 
@@ -150,7 +150,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
 .project-status {
   font-size: 0.7rem;
   letter-spacing: 0.06em;
-  color: #4a4540;
+  color: #777;
   font-style: italic;
   white-space: nowrap;
 }
@@ -161,19 +161,19 @@ section:nth-child(4) { animation-delay: 0.4s; }
 
 .project-desc {
   font-size: 0.82rem;
-  color: #706b65;
+  color: #999;
   line-height: 1.5;
 }
 
 .project-meta {
   margin-top: 0.35rem;
   font-size: 0.72rem;
-  color: #3d3833;
+  color: #666;
   letter-spacing: 0.02em;
 }
 
 .project-meta a {
-  color: #3d3833;
+  color: #666;
   transition: color 0.25s;
 }
 
@@ -210,7 +210,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
   font-family: 'Newsreader', serif;
   font-style: italic;
   font-size: 0.95rem;
-  color: #aaa;
+  color: #ccc;
   margin-bottom: 0.8rem;
 }
 
@@ -242,7 +242,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
 
 .now-item-note {
   font-size: 0.78rem;
-  color: #706b65;
+  color: #888;
   margin-top: 0.15rem;
 }
 
@@ -428,13 +428,5 @@ footer {
   }
   .name {
     font-size: 1.5rem;
-  }
-  .project {
-    padding: 1rem 1.1rem;
-  }
-  .project-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
   }
 }
