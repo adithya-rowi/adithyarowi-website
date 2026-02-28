@@ -1,207 +1,244 @@
-import Link from "next/link"
-import { musicSets, booksNow } from "@/lib/favs"
+import type { Metadata } from "next";
 
-function lastUpdated() {
-  const commit = process.env.COMMIT_REF || process.env.GIT_COMMIT || null
-  const date = new Date()
-  const formatted = date.toLocaleString("en-GB", {
-    timeZone: "Asia/Jakarta",
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  })
-  return { formatted, commit }
-}
+export const metadata: Metadata = {
+  title: "Adithya Rowi",
+  description: "I talk to AI and things happen. Jakarta.",
+};
 
 export default function Page() {
-  const { formatted, commit } = lastUpdated()
-
-  const toEmbed = (url: string) =>
-    url
-      ? url
-          .replace("youtu.be/", "www.youtube.com/embed/")
-          .replace("watch?v=", "embed/")
-          .split("?")[0]
-      : ""
-
   return (
-    <main className="min-h-screen bg-white text-neutral-900 antialiased">
-      <div className="mx-auto max-w-3xl px-5 py-12">
-        {/* Header */}
-        <header className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">Adithya Nugraputra Rowi</h1>
-          <p className="mt-3 text-base md:text-lg text-neutral-700">Multi-dimensional, like you.</p>
-        </header>
+    <main className="page">
+      {/* HEADER */}
+      <header>
+        <h1 className="name">Adithya Rowi</h1>
+        <p className="tagline">I talk to AI and things happen. Jakarta.</p>
+        <div className="header-links">
+          <a href="mailto:adithyarowi@gmail.com">Email</a>
+          <a href="https://github.com/adithya-rowi" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://weless.substack.com/" target="_blank" rel="noreferrer">Substack</a>
+          <a href="https://www.linkedin.com/in/adithya-n-rowi-a5a6a76/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://x.com/adithyarowi" target="_blank" rel="noreferrer">X</a>
+          <a href="https://www.instagram.com/adithyarowi/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.youtube.com/@enjoytheweless" target="_blank" rel="noreferrer">YouTube</a>
+          <a href="https://hawa.bearblog.dev/blog/" target="_blank" rel="noreferrer">Hawa</a>
+        </div>
+      </header>
 
-        {/* Find me */}
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-3">Find me</h2>
-          <p className="mb-3 text-neutral-700">
-            <a href="mailto:adithyarowi@gmail.com" className="underline underline-offset-4 hover:no-underline">
-              adithyarowi@gmail.com
-            </a>
+      {/* PROJECTS */}
+      <section>
+        <div className="section-title">Projects</div>
+
+        <a className="project" href="https://biks.ai/" target="_blank" rel="noreferrer">
+          <div className="project-header">
+            <span className="project-name">Biks AI</span>
+            <span className="status status-live">Live</span>
+          </div>
+          <p className="project-desc">
+            AI translation layer for Indonesian SMEs. Voice note your business problem via WhatsApp
+            or Telegram — agents build a working prototype in minutes.{" "}
+            <span
+              className="project-collab"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open("https://www.ngurahlinggih.com/", "_blank");
+              }}
+            >
+              with <span className="collab-link">Ngurah</span>
+            </span>
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><a href="https://github.com/adithya-rowi" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">GitHub</a></li>
-            <li><a href="https://weless.substack.com/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Weless (Substack)</a></li>
-            <li><a href="https://www.linkedin.com/in/adithya-n-rowi-a5a6a76/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">LinkedIn</a></li>
-            <li><a href="https://x.com/adithyarowi" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Twitter / X</a></li>
-            <li><a href="https://www.instagram.com/adithyarowi/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Instagram</a></li>
-            <li><a href="https://www.youtube.com/@enjoytheweless" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">YouTube</a></li>
-            <li><a href="https://hawa.bearblog.dev/blog/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Pseudonym: Hawa (BearBlog)</a></li>
-          </ul>
-        </section>
+          <div className="project-tech">
+            <span className="tech">OpenClaw</span>
+            <span className="tech">Claude</span>
+            <span className="tech">Replit</span>
+            <span className="tech">Telegram</span>
+            <span className="tech">WhatsApp</span>
+          </div>
+        </a>
 
-        {/* Projects */}
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-3">Projects</h2>
-          <ul className="space-y-6">
-            <li>
-              <p className="font-medium">
-                <a                
-                  href="https://gusahab.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline underline-offset-4 hover:no-underline"
-                >
-                  Gus Ahab AI
-                </a>
-                {" "}
-                <a href="https://github.com/adithya-rowi" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-neutral-900" title="View code on GitHub">
-                  <svg className="inline-block w-4 h-4 ml-1 -mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </p>
-              <p className="text-neutral-800 text-sm mt-1">
-                AI-powered Islamic Q&A chatbot inspired by the teaching style of Gus Baha.
-              </p>
-            </li>
-
-            <li>
-              <p className="font-medium">
-                <a                
-                  href="https://www.mahfudmd-ai.dev/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline underline-offset-4 hover:no-underline"
-                >
-                  MahfudMD-AI
-                </a>{" "}
-                — Site up, backend paused
-              </p>
-              <p className="text-neutral-800 text-sm mt-1">
-                Chatbot using Mahfud MD's YouTube content with{" "}
-                <a href="https://www.ragie.ai/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Ragie.AI</a>{" "}
-                (RAG) and ChatGPT-4o (LLM) for conversation.
-              </p>
-            </li>
-
-            <li>
-              <p className="font-medium">
-                Cyber Maturity Copilot (winner of Ensign AI Showdown 2025)
-                {" "}
-                <a href="https://github.com/adithya-rowi/Cyber-Maturity-Copilot" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-neutral-900" title="View code on GitHub">
-                  <svg className="inline-block w-4 h-4 ml-1 -mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </p>
-              <p className="text-neutral-800 text-sm mt-1">
-                Automates assessments using{" "}
-                <a href="https://landing.ai/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Landing.AI</a>{" "}
-                (OCR),{" "}
-                <a href="https://www.ragie.ai/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">Ragie.AI</a>{" "}
-                (RAG), and DeepSeek (LLM) for faster, accurate analysis.
-              </p>
-            </li>
-          </ul>
-        </section>
-
-        {/* Labs */}
-        <section className="mb-12">
-          <Link href="/labs" className="group">
-            <h2 className="text-xl font-semibold mb-3 underline underline-offset-4 group-hover:no-underline cursor-pointer">
-              Labs
-            </h2>
-          </Link>
-          <p className="text-neutral-800 text-sm">
-            New project: build a chatbot from YouTube links, so you can talk to whoever you admire.{" "}
-            <Link href="/labs" className="underline underline-offset-4 hover:no-underline">Learn more</Link>
+        <a className="project" href="https://loper.id/" target="_blank" rel="noreferrer">
+          <div className="project-header">
+            <span className="project-name">Loper</span>
+            <span className="status status-building">Building</span>
+          </div>
+          <p className="project-desc">
+            AI-powered news intelligence for Indonesian commissioners and board members.
+            Personalized briefings that change decisions. 6-model AI council architecture.
           </p>
-        </section>
-
-        {/* Now playing & reading */}
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-3">Now playing & reading</h2>
-
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-2">Music I keep looping</h3>
-            <ul className="space-y-4">
-              {musicSets.map((s) => (
-                <li key={s.url} className="space-y-2">
-                  <p className="font-medium">{s.title}</p>
-                  {s.url && (
-                    <div className="aspect-video w-full overflow-hidden rounded-md border border-neutral-200">
-                      <iframe
-                        className="h-full w-full"
-                        src={toEmbed(s.url)}
-                        title={s.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
-                  )}
-                  <p className="text-sm">
-                    {s.url ? (
-                      <>
-                        <a className="underline underline-offset-4 hover:no-underline" href={s.url} target="_blank" rel="noreferrer">
-                          YouTube link
-                        </a>{" "}
-                        {s.note ? <span className="text-neutral-600">— {s.note}</span> : null}
-                      </>
-                    ) : (
-                      s.note ? <span className="text-neutral-600">{s.note}</span> : null
-                    )}
-                  </p>
-                </li>
-              ))}
-            </ul>
+          <div className="project-tech">
+            <span className="tech">Perplexity</span>
+            <span className="tech">Gemini</span>
+            <span className="tech">Grok</span>
+            <span className="tech">DeepSeek</span>
+            <span className="tech">GPT</span>
+            <span className="tech">Claude</span>
           </div>
+        </a>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Reading / listening now</h3>
-            <ul className="space-y-3">
-              {booksNow.map((b) => (
-                <li key={b.title} className="border border-neutral-200 rounded-md p-3">
-                  {b.url ? (
-                    <p className="font-medium">
-                      <a className="underline underline-offset-4 hover:no-underline" href={b.url} target="_blank" rel="noreferrer">
-                        {b.title}
-                      </a>
-                    </p>
-                  ) : (
-                    <p className="font-medium">{b.title}</p>
-                  )}
-                  {b.note && <p className="text-neutral-700 text-sm mt-1">{b.note}</p>}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-neutral-600 mt-2">I'll keep this list fresh. Audiobooks count.</p>
+        <a className="project" href="https://gusahab.com" target="_blank" rel="noreferrer">
+          <div className="project-header">
+            <span className="project-name">Gus Ahab AI</span>
+            <span className="status status-live">Live</span>
           </div>
-        </section>
+          <p className="project-desc">
+            AI-powered Islamic Q&amp;A chatbot inspired by the teaching style of Gus Baha.
+          </p>
+          <div className="project-tech">
+            <span className="tech">Ragie.AI</span>
+            <span className="tech">RAG</span>
+            <span className="tech">ChatGPT-4o</span>
+          </div>
+        </a>
 
-        {/* Footer */}
-        <footer className="pt-6 mt-6 border-t border-neutral-200 text-sm text-neutral-600">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <p>Thanks for visiting.</p>
-            <p className="text-neutral-500">
-              Last updated: <span className="font-medium">{formatted}</span>
-              {commit ? (
-                <> · <a className="underline underline-offset-4 hover:no-underline" href={`https://github.com/adithya-rowi/adithyarowi-website/commit/${commit}`} target="_blank" rel="noreferrer">view commit</a></>
-              ) : null}
-            </p>
+        <a className="project" href="https://nambah.lol/" target="_blank" rel="noreferrer">
+          <div className="project-header">
+            <span className="project-name">Nambah</span>
+            <span className="status status-live">Live</span>
           </div>
-        </footer>
-      </div>
+          <p className="project-desc">
+            Private investment group for my inner circle. We save together, invest together, and
+            holiday together. ~30% fund growth last year.
+          </p>
+          <div className="project-tech">
+            <span className="tech">Stocks</span>
+            <span className="tech">Bonds</span>
+          </div>
+        </a>
+
+        <a className="project" href="https://www.mahfudmd-ai.dev/" target="_blank" rel="noreferrer">
+          <div className="project-header">
+            <span className="project-name">MahfudMD-AI</span>
+            <span className="status status-paused">Paused</span>
+          </div>
+          <p className="project-desc">
+            Chatbot built from Mahfud MD&apos;s YouTube content. Ask him anything.
+          </p>
+          <div className="project-tech">
+            <span className="tech">Ragie.AI</span>
+            <span className="tech">RAG</span>
+            <span className="tech">GPT-4o</span>
+          </div>
+        </a>
+
+        <div className="project project-no-link">
+          <div className="project-header">
+            <span className="project-name">Cyber Maturity Copilot</span>
+            <span className="status status-winner">Winner — Ensign AI 2025</span>
+          </div>
+          <p className="project-desc">
+            Automates cyber maturity assessments using OCR, RAG, and LLM for faster analysis.
+          </p>
+          <div className="project-tech">
+            <span className="tech">Landing.AI</span>
+            <span className="tech">Ragie.AI</span>
+            <span className="tech">DeepSeek</span>
+          </div>
+        </div>
+      </section>
+
+      {/* NOW */}
+      <section>
+        <div className="section-title">Now</div>
+
+        <div className="now-group">
+          <div className="now-label">Listening</div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://youtu.be/o_N5JQYHJXk?si=4AdVglPRbJm3lLwc" target="_blank" rel="noreferrer">
+                Fred again.. – Green Room Set (Rome)
+              </a>
+            </div>
+            <div className="now-item-note">Party vibe I&apos;d go to. Turn it up.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Runnin-Down-Dream-Thrive-Career/dp/0593799666" target="_blank" rel="noreferrer">
+                Runnin&apos; Down a Dream – Bill Gurley
+              </a>
+            </div>
+            <div className="now-item-note">Smart VC, knew him from Tim Ferriss. Just curious.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Way-Excellence-Guide-Greatness-Satisfaction/dp/0063348853" target="_blank" rel="noreferrer">
+                The Way of Excellence – Brad Stulberg
+              </a>
+            </div>
+            <div className="now-item-note">Cal Newport and Steve Kerr praised it. Had to check it out.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Road-Ahead-Bill-Gates/dp/0140260404" target="_blank" rel="noreferrer">
+                The Road Ahead – Bill Gates
+              </a>
+            </div>
+            <div className="now-item-note">Someone recommended it, can&apos;t remember who lol.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Wisdom-Takes-Work-Repeat-Virtues/dp/0593191730" target="_blank" rel="noreferrer">
+                Wisdom Takes Work
+              </a>
+            </div>
+            <div className="now-item-note">Listening now.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Almanack-Naval-Ravikant-Wealth-Happiness/dp/B0FBCVCC7M" target="_blank" rel="noreferrer">
+                The Almanack of Naval Ravikant
+              </a>
+            </div>
+            <div className="now-item-note">Revisiting.</div>
+          </div>
+        </div>
+
+        <div className="now-group">
+          <div className="now-label">Reading</div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Inner-Game-Tennis-Classic-Performance/dp/0679778314" target="_blank" rel="noreferrer">
+                The Inner Game of Tennis – W. Timothy Gallwey
+              </a>
+            </div>
+            <div className="now-item-note">Training my mental game. I play padel now lol.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/High-Output-Management-Andrew-Grove/dp/0679762884" target="_blank" rel="noreferrer">
+                High Output Management
+              </a>
+            </div>
+            <div className="now-item-note">Try to be a great leader.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">
+              <a href="https://www.amazon.com/Sense-Style-Thinking-Persons-Writing/dp/0143127799" target="_blank" rel="noreferrer">
+                The Sense of Style
+              </a>
+            </div>
+            <div className="now-item-note">For clearer writing.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">Syajaratul Ma&apos;arif — Syaikh al-&apos;Izz bin Abdus Salam</div>
+            <div className="now-item-note">Learning from a wise person.</div>
+          </div>
+          <div className="now-item">
+            <div className="now-item-title">Hayat dan Wasiat Abul Hasan asy-Syadzili</div>
+            <div className="now-item-note">Learning to live closer to God.</div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+        <a href="mailto:adithyarowi@gmail.com" className="footer-email">
+          adithyarowi@gmail.com
+        </a>
+        <p className="footer-support">
+          <a href="/support" className="support-link">Support my work</a>
+        </p>
+        <p className="footer-note">Thanks for visiting.</p>
+      </footer>
     </main>
-  )
+  );
 }

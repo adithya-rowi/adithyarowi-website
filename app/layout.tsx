@@ -1,26 +1,31 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
-
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+import type { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/next';
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Adithya Rowi',
-}
+  title: "Adithya Rowi",
+  description: "I talk to AI and things happen. Jakarta.",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Outfit:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
         {children}
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
