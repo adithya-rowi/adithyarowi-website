@@ -75,8 +75,8 @@ export default function Page() {
             holiday together. ~30% fund growth last year.
           </p>
           <div className="project-tech">
-            <span className="tech">Stocks</span>
-            <span className="tech">Bonds</span>
+            <span className="tech">Replit</span>
+            <span className="tech">Claude</span>
           </div>
         </a>
 
