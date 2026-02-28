@@ -14,7 +14,7 @@ export default function BiksCard() {
         <span className="project-status">Live</span>
       </div>
       <p className="project-desc">
-        AI translation layer for Indonesian SMEs. Voice note your problem — agents build a prototype in minutes.{" "}
+        AI middleman between your business problem and the latest AI models. Voice note via Telegram — agents build a working prototype in minutes.{" "}
         <span
           className="collab"
           onClick={(e) => openLink(e, "https://www.ngurahlinggih.com/")}
