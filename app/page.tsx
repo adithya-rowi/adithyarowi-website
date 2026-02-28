@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import BiksCard from "./components/biks-card";
-import TechLink from "./components/tech-link";
 
 export const metadata: Metadata = {
   title: "Adithya Rowi",
@@ -33,82 +32,88 @@ export default function Page() {
         <BiksCard />
 
         <a className="project" href="https://loper.id/" target="_blank" rel="noreferrer">
-          <div className="project-header">
+          <div className="project-row">
             <span className="project-name">Loper</span>
-            <span className="status status-building">Building</span>
+            <span className="project-status">Building</span>
           </div>
           <p className="project-desc">
-            AI-powered news intelligence for Indonesian commissioners and board members.
-            Personalized briefings that change decisions. 6-model AI council architecture.
+            AI-powered news intelligence for Indonesian commissioners. Personalized briefings that change decisions.
           </p>
-          <div className="project-tech">
-            <TechLink href="https://perplexity.ai">Perplexity</TechLink>
-            <TechLink href="https://gemini.google.com">Gemini</TechLink>
-            <TechLink href="https://grok.com">Grok</TechLink>
-            <TechLink href="https://deepseek.com">DeepSeek</TechLink>
-            <TechLink href="https://openai.com">GPT</TechLink>
-            <TechLink href="https://claude.ai">Claude</TechLink>
-          </div>
+          <p className="project-meta">
+            <a href="https://perplexity.ai" target="_blank" rel="noreferrer">Perplexity</a>
+            {" · "}
+            <a href="https://gemini.google.com" target="_blank" rel="noreferrer">Gemini</a>
+            {" · "}
+            <a href="https://grok.com" target="_blank" rel="noreferrer">Grok</a>
+            {" · "}
+            <a href="https://deepseek.com" target="_blank" rel="noreferrer">DeepSeek</a>
+            {" · "}
+            <a href="https://openai.com" target="_blank" rel="noreferrer">GPT</a>
+            {" · "}
+            <a href="https://claude.ai" target="_blank" rel="noreferrer">Claude</a>
+          </p>
         </a>
 
         <a className="project" href="https://gusahab.com" target="_blank" rel="noreferrer">
-          <div className="project-header">
+          <div className="project-row">
             <span className="project-name">Gus Ahab AI</span>
-            <span className="status status-live">Live</span>
+            <span className="project-status">Live</span>
           </div>
           <p className="project-desc">
-            AI-powered Islamic Q&amp;A chatbot inspired by the teaching style of Gus Baha.
+            Islamic Q&amp;A chatbot inspired by the teaching style of Gus Baha.
           </p>
-          <div className="project-tech">
-            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
-            <span className="tech">RAG</span>
-            <TechLink href="https://openai.com">ChatGPT-4o</TechLink>
-          </div>
+          <p className="project-meta">
+            <a href="https://ragie.ai" target="_blank" rel="noreferrer">Ragie.AI</a>
+            {" · "}RAG{" · "}
+            <a href="https://openai.com" target="_blank" rel="noreferrer">ChatGPT-4o</a>
+          </p>
         </a>
 
         <a className="project" href="https://nambah.lol/" target="_blank" rel="noreferrer">
-          <div className="project-header">
+          <div className="project-row">
             <span className="project-name">Nambah</span>
-            <span className="status status-live">Live</span>
+            <span className="project-status">Live</span>
           </div>
           <p className="project-desc">
-            Private investment group for my inner circle. We save together, invest together, and
-            holiday together. ~30% fund growth last year.
+            Private investment group for my inner circle. Save together, invest together, holiday together. ~30% last year.
           </p>
-          <div className="project-tech">
-            <TechLink href="https://replit.com">Replit</TechLink>
-            <TechLink href="https://claude.ai">Claude</TechLink>
-          </div>
+          <p className="project-meta">
+            <a href="https://replit.com" target="_blank" rel="noreferrer">Replit</a>
+            {" · "}
+            <a href="https://claude.ai" target="_blank" rel="noreferrer">Claude</a>
+          </p>
         </a>
 
         <a className="project" href="https://www.mahfudmd-ai.dev/" target="_blank" rel="noreferrer">
-          <div className="project-header">
+          <div className="project-row">
             <span className="project-name">MahfudMD-AI</span>
-            <span className="status status-paused">Paused</span>
+            <span className="project-status">Paused</span>
           </div>
           <p className="project-desc">
             Chatbot built from Mahfud MD&apos;s YouTube content. Ask him anything.
           </p>
-          <div className="project-tech">
-            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
-            <span className="tech">RAG</span>
-            <TechLink href="https://openai.com">GPT-4o</TechLink>
-          </div>
+          <p className="project-meta">
+            <a href="https://ragie.ai" target="_blank" rel="noreferrer">Ragie.AI</a>
+            {" · "}RAG{" · "}
+            <a href="https://openai.com" target="_blank" rel="noreferrer">GPT-4o</a>
+          </p>
         </a>
 
-        <div className="project project-no-link">
-          <div className="project-header">
+        <div className="project" style={{ cursor: "default" }}>
+          <div className="project-row">
             <span className="project-name">Cyber Maturity Copilot</span>
-            <span className="status status-winner">Winner — Ensign AI 2025</span>
+            <span className="project-status project-status-winner">Winner — Ensign AI 2025</span>
           </div>
           <p className="project-desc">
             Automates cyber maturity assessments using OCR, RAG, and LLM for faster analysis.
           </p>
-          <div className="project-tech">
-            <TechLink href="https://landing.ai">Landing.AI</TechLink>
-            <TechLink href="https://ragie.ai">Ragie.AI</TechLink>
-            <TechLink href="https://deepseek.com">DeepSeek</TechLink>
-          </div>
+          <p className="project-meta">
+            <a href="https://landing.ai" target="_blank" rel="noreferrer">Landing.AI</a>
+            {" · "}
+            <a href="https://ragie.ai" target="_blank" rel="noreferrer">Ragie.AI</a>
+            {" · "}
+            <a href="https://deepseek.com" target="_blank" rel="noreferrer">DeepSeek</a>
+          </p>
         </div>
       </section>
 

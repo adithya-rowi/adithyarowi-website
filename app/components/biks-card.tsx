@@ -1,48 +1,35 @@
 "use client";
 
 export default function BiksCard() {
+  function openLink(e: React.MouseEvent, url: string) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
   return (
     <a className="project" href="https://biks.ai/" target="_blank" rel="noreferrer">
-      <div className="project-header">
+      <div className="project-row">
         <span className="project-name">Biks AI</span>
-        <span className="status status-live">Live</span>
+        <span className="project-status">Live</span>
       </div>
       <p className="project-desc">
-        AI translation layer for Indonesian SMEs. Voice note your business problem via WhatsApp
-        or Telegram — agents build a working prototype in minutes.{" "}
+        AI translation layer for Indonesian SMEs. Voice note your problem — agents build a prototype in minutes.{" "}
         <span
-          className="project-collab"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open("https://www.ngurahlinggih.com/", "_blank");
-          }}
+          className="collab"
+          onClick={(e) => openLink(e, "https://www.ngurahlinggih.com/")}
         >
           with <span className="collab-link">Ngurah</span>
         </span>
       </p>
-      <div className="project-tech">
-        <span
-          className="tech tech-link"
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://openclaw.com", "_blank", "noopener,noreferrer"); }}
-        >
-          OpenClaw
-        </span>
-        <span
-          className="tech tech-link"
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://claude.ai", "_blank", "noopener,noreferrer"); }}
-        >
-          Claude
-        </span>
-        <span
-          className="tech tech-link"
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open("https://replit.com", "_blank", "noopener,noreferrer"); }}
-        >
-          Replit
-        </span>
-        <span className="tech">Telegram</span>
-        <span className="tech">WhatsApp</span>
-      </div>
+      <p className="project-meta">
+        <span className="collab-link" onClick={(e) => openLink(e, "https://openclaw.com")}>OpenClaw</span>
+        {" · "}
+        <span className="collab-link" onClick={(e) => openLink(e, "https://claude.ai")}>Claude</span>
+        {" · "}
+        <span className="collab-link" onClick={(e) => openLink(e, "https://replit.com")}>Replit</span>
+        {" · "}Telegram · WhatsApp
+      </p>
     </a>
   );
 }
