@@ -12,8 +12,7 @@ export default function SupportPage() {
   }
 
   function donate() {
-    // Replace with your actual PayPal checkout link
-    const paypalUrl = `https://www.paypal.com/paypalme/adithyarowi/${qty * UNIT}`;
+    const paypalUrl = `https://paypal.me/arowi/${qty * UNIT}`;
     window.open(paypalUrl, "_blank");
   }
 
@@ -51,6 +50,14 @@ export default function SupportPage() {
           Donate via PayPal
         </button>
         <p className="donate-note">Redirects to PayPal checkout. Payments in USD.</p>
+        <button
+          className="paypal-btn"
+          style={{ marginTop: "0.75rem" }}
+          onClick={() => window.open("https://saweria.co/gusapp", "_blank")}
+        >
+          Donate via Saweria
+        </button>
+        <p className="donate-note">For Indonesian supporters.</p>
       </div>
 
       <footer style={{ borderTop: "none" }}>

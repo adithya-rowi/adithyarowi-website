@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BiksCard from "./components/biks-card";
 
 export const metadata: Metadata = {
   title: "Adithya Rowi",
@@ -28,24 +29,7 @@ export default function Page() {
       <section>
         <div className="section-title">Projects</div>
 
-        <a className="project" href="https://biks.ai/" target="_blank" rel="noreferrer">
-          <div className="project-header">
-            <span className="project-name">Biks AI</span>
-            <span className="status status-live">Live</span>
-          </div>
-          <p className="project-desc">
-            AI translation layer for Indonesian SMEs. Voice note your business problem via WhatsApp
-            or Telegram — agents build a working prototype in minutes.{" "}
-            <span className="project-collab">with Ngurah</span>
-          </p>
-          <div className="project-tech">
-            <span className="tech">OpenClaw</span>
-            <span className="tech">Claude</span>
-            <span className="tech">Replit</span>
-            <span className="tech">Telegram</span>
-            <span className="tech">WhatsApp</span>
-          </div>
-        </a>
+        <BiksCard />
 
         <a className="project" href="https://loper.id/" target="_blank" rel="noreferrer">
           <div className="project-header">
